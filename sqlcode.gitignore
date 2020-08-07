@@ -1,0 +1,7 @@
+select top 
+with top_sal
+as
+(select EMPLOYEE_ID,SALARY,dense_rank() over (order by salary desc) as rnk from employees )
+select EMPLOYEE_ID,salary from top_sal 
+where top_sal.rnk = n 
+**\\ HERE n = NUMBER OF YOUR HIGHEST SALARY LIKE 2ND ,3RD,4TH
